@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+<meta name="google-site-verification" content="qPc9Fkg-gWMZjeJS8Tu1Si0HE7pJqKQETMn96o9i-hk" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Prompt Cleaner &amp; Formatter – Free ChatGPT Prompt Optimizer</title>
+  <meta name="description" content="Free online AI Prompt Cleaner &amp; Formatter. Instantly clean messy prompts, fix formatting, optimize for ChatGPT, and standardize placeholders. 100% private – runs in your browser.">
+  <meta name="keywords" content="prompt cleaner, prompt formatter, ChatGPT prompt optimizer, AI prompt tool, clean prompt, prompt engineering, text cleaner">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AI Prompt Cleaner">
+  <meta name="theme-color" content="#020617">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AI Prompt Cleaner &amp; Formatter">
+  <meta property="og:title" content="AI Prompt Cleaner &amp; Formatter – Free ChatGPT Prompt Optimizer">
+  <meta property="og:description" content="Clean messy prompts, fix formatting, and structure them for ChatGPT in one click. Free, private, no sign-up.">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Prompt Cleaner &amp; Formatter">
+  <meta name="twitter:description" content="Clean, format and optimize AI prompts instantly. 100% client-side and free.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M20 22h24M20 32h16M20 42h22' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AI Prompt Cleaner & Formatter",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "description": "Free browser-based tool to clean, format and optimize AI prompts for ChatGPT and other LLMs.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- Google AdSense loader script goes here when your account is approved -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html { color-scheme: dark; }
+    ::selection { background: rgba(99, 102, 241, .4); }
+    .glass {
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 10px 40px -12px rgba(0, 0, 0, .6);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #818cf8 0%, #a78bfa 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      box-shadow: 0 6px 20px -6px rgba(99, 102, 241, .7);
+      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    }
+    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+    .action-btn { transition: all .18s ease; }
+    .action-btn.is-active {
+      border-color: rgba(129, 140, 248, .75);
+      background: rgba(99, 102, 241, .16);
+      box-shadow: 0 0 0 1px rgba(129, 140, 248, .35), 0 10px 30px -12px rgba(99, 102, 241, .6);
+    }
+    .editor {
+      resize: vertical;
+      min-height: 340px;
+      tab-size: 2;
+    }
+    .editor::placeholder { color: #475569; }
+    .editor::-webkit-scrollbar { width: 10px; height: 10px; }
+    .editor::-webkit-scrollbar-thumb { background: #334155; border-radius: 8px; border: 2px solid transparent; background-clip: content-box; }
+    .editor::-webkit-scrollbar-thumb:hover { background: #475569; background-clip: content-box; border: 2px solid transparent; }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-6px); }
+      40% { transform: translateX(6px); }
+      60% { transform: translateX(-4px); }
+      80% { transform: translateX(4px); }
+    }
+    .shake { animation: shake .4s ease; border-color: rgba(251, 113, 133, .7) !important; }
+    @keyframes pop {
+      0% { opacity: 0; transform: translate(-50%, 16px) scale(.96); }
+      100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+    }
+    #toast.show { display: flex; animation: pop .22s ease forwards; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    #modal.open { display: flex; animation: fadeIn .18s ease; }
+    #modal.open .modal-panel { animation: riseIn .22s ease; }
+    .prose-modal h3 { color: #e2e8f0; font-weight: 600; font-size: 1rem; margin: 1.25rem 0 .4rem; }
+    .prose-modal p, .prose-modal li { color: #94a3b8; font-size: .9rem; line-height: 1.65; }
+    .prose-modal p { margin-bottom: .6rem; }
+    .prose-modal ul { list-style: disc; padding-left: 1.25rem; margin-bottom: .6rem; }
+    .prose-modal a { color: #a5b4fc; text-decoration: underline; }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+    .toggle-track { transition: background .2s ease; }
+    .toggle-dot { transition: transform .2s ease; }
+    input:checked + .toggle-track { background: #6366f1; }
+    input:checked + .toggle-track .toggle-dot { transform: translateX(16px); }
+    input:focus-visible + .toggle-track { outline: 2px solid #818cf8; outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-slate-200 font-sans antialiased min-h-screen">
+
+  <!-- Ambient background glow -->
+  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <div class="absolute -top-40 left-1/4 h-[28rem] w-[28rem] rounded-full bg-indigo-600/20 blur-3xl"></div>
+    <div class="absolute top-1/3 -right-32 h-[26rem] w-[26rem] rounded-full bg-violet-600/15 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 h-[22rem] w-[22rem] rounded-full bg-fuchsia-600/10 blur-3xl"></div>
+  </div>
+
+  <noscript>
+    <div class="bg-amber-500/10 border-b border-amber-500/30 text-amber-200 text-sm text-center py-2 px-4">
+      This tool needs JavaScript enabled to clean and format your prompts.
+    </div>
+  </noscript>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-30 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <a href="#top" class="flex items-center gap-3" aria-label="AI Prompt Cleaner home">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500 shadow-lg shadow-indigo-500/30">
+          <svg class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M5 12h9M5 17h12"/></svg>
+        </span>
+        <span class="text-base font-bold tracking-tight text-white">Prompt<span class="gradient-text">Cleaner</span></span>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm text-slate-400 sm:flex" aria-label="Primary">
+        <a href="#tool" class="transition hover:text-white">Tool</a>
+        <a href="#how-it-works" class="transition hover:text-white">How it works</a>
+        <a href="#faq" class="transition hover:text-white">FAQ</a>
+        <button type="button" data-modal="about" class="transition hover:text-white">About</button>
+      </nav>
+      <span class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300">
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span> 100% private
+      </span>
+    </div>
+  </header>
+
+  <main id="top" class="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
+
+    <!-- Hero -->
+    <section class="mx-auto max-w-3xl text-center">
+      <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-300">
+        Free · No sign-up · Runs in your browser
+      </p>
+      <h1 class="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+        Clean, format &amp; optimize your <span class="gradient-text">AI prompts</span> instantly
+      </h1>
+      <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+        Paste a messy prompt, pick a transformation, and copy a clean, structured result. Nothing you type ever leaves your device.
+      </p>
+    </section>
+
+    <!-- ADSENSE TOP BANNER -->
+    <div class="mx-auto mt-8 w-full max-w-4xl">
+      <div id="ad-top" class="flex min-h-[90px] w-full items-center justify-center rounded-xl border-2 border-dashed border-slate-700 bg-slate-900/50 text-center">
+        <!-- ADSENSE TOP BANNER -->
+        <div class="px-4 py-3">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">Advertisement</p>
+          <p class="mt-1 text-xs text-slate-600">Top banner · 728×90 / responsive</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tool + Sidebar -->
+    <div id="tool" class="mt-10 grid scroll-mt-24 grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_320px]">
+
+      <section aria-label="Prompt cleaning tool" class="min-w-0 space-y-6">
+
+        <!-- Actions -->
+        <div class="glass rounded-2xl p-4 sm:p-5">
+          <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-400">Choose a transformation</h2>
+            <label class="flex cursor-pointer select-none items-center gap-2 text-xs text-slate-400" title="Re-run the last action automatically as you type">
+              <span>Live mode</span>
+              <input id="live-toggle" type="checkbox" class="peer sr-only">
+              <span class="toggle-track relative h-5 w-9 rounded-full bg-slate-700">
+                <span class="toggle-dot absolute left-0.5 top-0.5 h-4 w-4 rounded-full bg-white shadow"></span>
+              </span>
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <button type="button" data-action="clean" class="action-btn rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-left hover:border-indigo-400/40 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400">
+              <span class="flex items-center gap-2 text-sm font-semibold text-white">
+                <svg class="h-4 w-4 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3zM19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15z"/></svg>
+                Clean &amp; Sanitize
+              </span>
+              <span class="mt-1 block text-xs leading-snug text-slate-400">Whitespace, line breaks, backslashes &amp; markdown junk</span>
+            </button>
+
+            <button type="button" data-action="optimize" class="action-btn rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-left hover:border-indigo-400/40 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400">
+              <span class="flex items-center gap-2 text-sm font-semibold text-white">
+                <svg class="h-4 w-4 text-violet-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+                Optimize for ChatGPT
+              </span>
+              <span class="mt-1 block text-xs leading-snug text-slate-400">Context · Task · Constraints · Output Format</span>
+            </button>
+
+            <button type="button" data-action="format" class="action-btn rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-left hover:border-indigo-400/40 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400">
+              <span class="flex items-center gap-2 text-sm font-semibold text-white">
+                <svg class="h-4 w-4 text-sky-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h16"/></svg>
+                Fix Formatting
+              </span>
+              <span class="mt-1 block text-xs leading-snug text-slate-400">Capitalize sentences, tidy bullets &amp; numbered lists</span>
+            </button>
+
+            <button type="button" data-action="variables" class="action-btn rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-left hover:border-indigo-400/40 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400">
+              <span class="flex items-center gap-2 text-sm font-semibold text-white">
+                <svg class="h-4 w-4 text-fuchsia-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H6a2 2 0 00-2 2v14a2 2 0 002 2h2M16 3h2a2 2 0 012 2v14a2 2 0 01-2 2h-2"/></svg>
+                Strip Variables
+              </span>
+              <span class="mt-1 block text-xs leading-snug text-slate-400">Turn <code class="font-mono text-slate-300">[insert name]</code> into <code class="font-mono text-slate-300">{{NAME}}</code></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Editors -->
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+
+          <!-- Input -->
+          <div class="glass flex min-w-0 flex-col rounded-2xl p-4 sm:p-5">
+            <div class="mb-3 flex items-center justify-between gap-2">
+              <label for="input" class="text-sm font-semibold text-white">Raw input</label>
+              <div class="flex items-center gap-1.5">
+                <button type="button" id="btn-sample" class="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400">Load sample</button>
+                <button type="button" id="btn-clear" class="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:bg-rose-500/15 hover:text-rose-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400">Clear</button>
+              </div>
+            </div>
+            <textarea id="input" class="editor w-full flex-1 rounded-xl border border-white/10 bg-slate-950/60 p-4 font-mono text-[13px] leading-relaxed text-slate-200 outline-none transition focus:border-indigo-400/60 focus:ring-2 focus:ring-indigo-500/30" spellcheck="false" placeholder="Paste your messy prompt here…&#10;&#10;Tip: copy text from a chat, a doc or a PDF – extra spaces, odd line breaks and stray markdown will be cleaned up for you."></textarea>
+            <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500" aria-live="polite">
+              <span><span id="in-chars" class="font-semibold text-slate-300">0</span> characters</span>
+              <span><span id="in-words" class="font-semibold text-slate-300">0</span> words</span>
+              <span><span id="in-lines" class="font-semibold text-slate-300">0</span> lines</span>
+            </div>
+          </div>
+
+          <!-- Output -->
+          <div class="glass flex min-w-0 flex-col rounded-2xl p-4 sm:p-5">
+            <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+              <label for="output" class="text-sm font-semibold text-white">Cleaned output</label>
+              <div class="flex items-center gap-1.5">
+                <button type="button" id="btn-swap" title="Move the output back into the input box so you can chain transformations" class="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400">Use as input</button>
+                <button type="button" id="btn-download" class="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400">Download .txt</button>
+                <button type="button" id="btn-copy" class="btn-primary inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300">
+                  <svg id="copy-icon" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/></svg>
+                  <span id="copy-label">Copy to Clipboard</span>
+                </button>
+              </div>
+            </div>
+            <textarea id="output" class="editor w-full flex-1 rounded-xl border border-white/10 bg-slate-950/60 p-4 font-mono text-[13px] leading-relaxed text-slate-200 outline-none transition focus:border-violet-400/60 focus:ring-2 focus:ring-violet-500/30" spellcheck="false" placeholder="Your cleaned prompt will appear here. You can still edit it before copying."></textarea>
+            <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500" aria-live="polite">
+              <span><span id="out-chars" class="font-semibold text-slate-300">0</span> characters</span>
+              <span><span id="out-words" class="font-semibold text-slate-300">0</span> words</span>
+              <span>~<span id="out-tokens" class="font-semibold text-slate-300">0</span> tokens</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div id="status" class="glass flex min-h-[48px] flex-wrap items-center gap-2 rounded-xl px-4 py-3 text-sm text-slate-400" role="status" aria-live="polite">
+          <span id="status-text">Ready. Paste a prompt and choose a transformation above.</span>
+          <span id="status-chips" class="flex flex-wrap gap-1.5"></span>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6" aria-label="Sidebar">
+        <!-- ADSENSE SIDEBAR -->
+        <div class="xl:sticky xl:top-24">
+          <div id="ad-sidebar" class="flex min-h-[250px] w-full items-center justify-center rounded-xl border-2 border-dashed border-slate-700 bg-slate-900/50 text-center xl:min-h-[600px]">
+            <!-- ADSENSE SIDEBAR -->
+            <div class="px-4 py-3">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">Advertisement</p>
+              <p class="mt-1 text-xs text-slate-600">Sidebar · 300×600 / 300×250</p>
+            </div>
+          </div>
+
+          <div class="glass mt-6 rounded-2xl p-5">
+            <h2 class="text-sm font-semibold text-white">Pro tips</h2>
+            <ul class="mt-3 space-y-2.5 text-sm leading-relaxed text-slate-400">
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400"></span>Chain actions: run <em>Clean &amp; Sanitize</em>, click <em>Use as input</em>, then <em>Optimize for ChatGPT</em>.</li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400"></span>Start constraint sentences with words like <em>must</em>, <em>avoid</em> or <em>never</em> so they land in the right section.</li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-fuchsia-400"></span>Labels such as <code class="font-mono text-slate-300">Task:</code> or <code class="font-mono text-slate-300">Format:</code> are respected automatically.</li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400"></span>Fenced code blocks are left untouched by every action.</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- How it works -->
+    <section id="how-it-works" class="mt-20 scroll-mt-24">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">How the Prompt Cleaner works</h2>
+        <p class="mt-3 text-slate-400">Four fast, deterministic transformations – no AI calls, no waiting, no data leaving your browser.</p>
+      </div>
+      <div class="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <article class="glass rounded-2xl p-5">
+          <div class="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-500/15 text-indigo-300 font-bold">1</div>
+          <h3 class="font-semibold text-white">Clean &amp; Sanitize</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400">Removes invisible characters, collapses repeated spaces, normalizes line breaks, strips escape backslashes and unwraps leftover markdown like bold markers and heading hashes.</p>
+        </article>
+        <article class="glass rounded-2xl p-5">
+          <div class="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/15 text-violet-300 font-bold">2</div>
+          <h3 class="font-semibold text-white">Optimize for ChatGPT</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400">Sorts your sentences into a clear template with Context, Task, Constraints and Output Format sections – the structure large language models follow most reliably.</p>
+        </article>
+        <article class="glass rounded-2xl p-5">
+          <div class="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-sky-500/15 text-sky-300 font-bold">3</div>
+          <h3 class="font-semibold text-white">Fix Formatting</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400">Capitalizes sentences, fixes the pronoun "I", converts mixed bullet symbols to a single style, renumbers lists and tidies punctuation spacing.</p>
+        </article>
+        <article class="glass rounded-2xl p-5">
+          <div class="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-fuchsia-500/15 text-fuchsia-300 font-bold">4</div>
+          <h3 class="font-semibold text-white">Strip Variables</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400">Finds free-text placeholders such as <code class="font-mono text-slate-300">[insert name here]</code> and standardizes them to <code class="font-mono text-slate-300">{{NAME}}</code>, ready for templates and automations.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Why -->
+    <section class="mt-20">
+      <div class="glass rounded-2xl p-6 sm:p-10">
+        <h2 class="text-2xl font-bold tracking-tight text-white">Why clean your AI prompts?</h2>
+        <div class="mt-5 grid grid-cols-1 gap-8 text-sm leading-relaxed text-slate-400 md:grid-cols-2">
+          <p>Prompts copied from emails, PDFs, spreadsheets or other chat windows often carry hidden baggage: non-breaking spaces, zero-width characters, smart quotes, doubled line breaks and half-rendered markdown. These artifacts waste tokens, confuse formatting and can subtly change how a model interprets your instructions.</p>
+          <p>A well-structured prompt – one that separates background, the actual request, hard rules and the expected output shape – consistently produces better, more predictable answers. This tool gives you that structure in a single click, so you can spend your time on the idea instead of the formatting.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mt-20 scroll-mt-24">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="text-center text-2xl font-bold tracking-tight text-white sm:text-3xl">Frequently asked questions</h2>
+        <div class="mt-8 space-y-3">
+          <details class="glass group rounded-xl px-5 py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-semibold text-white">Is my prompt sent to a server?
+              <svg class="chev h-4 w-4 shrink-0 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-400">No. All processing happens locally in your browser with plain JavaScript. Your text is never uploaded, stored or logged.</p>
+          </details>
+          <details class="glass group rounded-xl px-5 py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-semibold text-white">Does this use AI to rewrite my prompt?
+              <svg class="chev h-4 w-4 shrink-0 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-400">No. The tool uses rule-based text transformations. It reorganizes and tidies your own words rather than inventing new content, so the meaning of your prompt stays yours. Always give the result a quick read before using it.</p>
+          </details>
+          <details class="glass group rounded-xl px-5 py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-semibold text-white">Will the optimized prompt work with Claude, Gemini or other models?
+              <svg class="chev h-4 w-4 shrink-0 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-400">Yes. The Context / Task / Constraints / Output Format layout is model-agnostic and works well with most modern chat-based language models.</p>
+          </details>
+          <details class="glass group rounded-xl px-5 py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-semibold text-white">What happens to code blocks in my prompt?
+              <svg class="chev h-4 w-4 shrink-0 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-400">Text inside triple-backtick code fences is protected from whitespace, capitalization and placeholder changes by the cleaning, formatting and variable actions, so your code stays exactly as written.</p>
+          </details>
+          <details class="glass group rounded-xl px-5 py-4">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-semibold text-white">Is the tool really free?
+              <svg class="chev h-4 w-4 shrink-0 text-slate-400 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-slate-400">Yes. It is free to use with no account and no usage limits. The site is supported by advertising.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADSENSE FOOTER -->
+    <div class="mx-auto mt-16 w-full max-w-4xl">
+      <div id="ad-footer" class="flex min-h-[90px] w-full items-center justify-center rounded-xl border-2 border-dashed border-slate-700 bg-slate-900/50 text-center">
+        <!-- ADSENSE FOOTER -->
+        <div class="px-4 py-3">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">Advertisement</p>
+          <p class="mt-1 text-xs text-slate-600">Footer banner · 728×90 / responsive</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-slate-950/70">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-8 text-sm text-slate-500 sm:px-6 md:flex-row lg:px-8">
+      <p>&copy; <span id="year">2026</span> AI Prompt Cleaner &amp; Formatter. All rights reserved.</p>
+      <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2" aria-label="Footer">
+        <button type="button" data-modal="about" class="transition hover:text-white focus:outline-none focus-visible:text-white focus-visible:underline">About Us</button>
+        <button type="button" data-modal="privacy" class="transition hover:text-white focus:outline-none focus-visible:text-white focus-visible:underline">Privacy Policy</button>
+        <button type="button" data-modal="terms" class="transition hover:text-white focus:outline-none focus-visible:text-white focus-visible:underline">Terms of Service</button>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 left-1/2 z-50 hidden -translate-x-1/2 items-center gap-2 rounded-xl border border-white/10 bg-slate-900/95 px-4 py-3 text-sm font-medium text-white shadow-2xl backdrop-blur-xl" role="status" aria-live="polite">
+    <span id="toast-icon" class="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300">
+      <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+    </span>
+    <span id="toast-text"></span>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-panel glass flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-slate-900/90">
+      <div class="flex items-center justify-between border-b border-white/10 px-6 py-4">
+        <h2 id="modal-title" class="text-lg font-bold text-white"></h2>
+        <button type="button" id="modal-close" class="rounded-lg p-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400" aria-label="Close dialog">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div id="modal-body" class="prose-modal overflow-y-auto px-6 py-5"></div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ---------------------------------------------------------------
+       Configuration
+    --------------------------------------------------------------- */
+    var CONTACT_EMAIL = 'contact@promptcleaner.app';
+    var EFFECTIVE_DATE = 'October 27, 2026';
+
+    /* ---------------------------------------------------------------
+       DOM helpers
+    --------------------------------------------------------------- */
+    function $(id) { return document.getElementById(id); }
+    var inputEl = $('input');
+    var outputEl = $('output');
+    var liveToggle = $('live-toggle');
+    var lastAction = null;
+    var liveTimer = null;
+
+    /* ---------------------------------------------------------------
+       Text utilities
+    --------------------------------------------------------------- */
+    var ABBREV_RE = /(?:^|[\s(])(?:e\.g|i\.e|etc|vs|approx|dr|mr|mrs|ms|prof|fig|no|st|inc|ltd|cf|al)\.$/i;
+
+    function mapOutsideCode(text, fn) {
+      return text.split(/(```[\s\S]*?```)/g).map(function (seg, i) {
+        return i % 2 === 1 ? seg : fn(seg);
+      }).join('');
+    }
+
+    function finalize(t) {
+      return t.replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').replace(/^\s+|\s+$/g, '');
+    }
+
+    function withProtected(s, fn) {
+      var store = [];
+      var protectedStr = s.replace(/`[^`\n]*`|https?:\/\/[^\s)]+|[^\s@]+@[^\s@]+\.[^\s@]+|\{\{[^}\n]*\}\}|\[[A-Z0-9_ ]{2,}\]/g, function (m) {
+        store.push(m);
+        return '\u0000' + (store.length - 1) + '\u0001';
+      });
+      var result = fn(protectedStr);
+      return result.replace(/\u0000(\d+)\u0001/g, function (m, i) { return store[Number(i)]; });
+    }
+
+    var NO_CAP = { iphone: 1, ipad: 1, imac: 1, ios: 1, ebay: 1, npm: 1, pnpm: 1, pip: 1, macos: 1, ipados: 1 };
+
+    function capitalizeSentences(s) {
+      return withProtected(s, function (p) {
+        // First word of the text
+        p = p.replace(/^(\s*)([a-z][a-z'\u2019]*)(?![\w@\/:\\-]|\.\w)/, function (m, ws, w) {
+          if (NO_CAP[w]) return m;
+          return ws + w.charAt(0).toUpperCase() + w.slice(1);
+        });
+        // Words after sentence enders
+        p = p.replace(/([.!?]["')\]]*)(\s+)([a-z][a-z'\u2019]*)(?![\w@\/:\\-]|\.\w)/g, function (m, punct, ws, w, off, str) {
+          var before = str.slice(0, off + 1);
+          if (ABBREV_RE.test(before)) return m;
+          if (NO_CAP[w]) return m;
+          return punct + ws + w.charAt(0).toUpperCase() + w.slice(1);
+        });
+        // Pronoun "I"
+        p = p.replace(/(^|[\s(\["'])i(?=[\s,.;:!?'\u2019)]|$)/g, '$1I');
+        return p;
+      });
+    }
+
+    function delta(before, after) {
+      var b = before.length, a = after.length;
+      if (!b) return '';
+      var pct = Math.round(Math.abs(b - a) / b * 100);
+      var arrow = a <= b ? '\u2212' : '+';
+      return 'Characters: ' + b.toLocaleString() + ' \u2192 ' + a.toLocaleString() + ' (' + arrow + pct + '%).';
+    }
+
+    function countWords(t) {
+      var m = t.trim().match(/\S+/g);
+      return m ? m.length : 0;
+    }
+
+    /* ---------------------------------------------------------------
+       Action 1: Clean & Sanitize
+    --------------------------------------------------------------- */
+    function cleanCore(raw) {
+      var t = raw.replace(/\r\n?/g, '\n');
+
+      // Invisible / exotic whitespace and typographic characters
+      t = t.replace(/[\u200B-\u200D\u2060\uFEFF\u00AD]/g, '');
+      t = t.replace(/[\u00A0\u1680\u2000-\u200A\u202F\u205F\u3000]/g, ' ');
+      t = t.replace(/[\u2028\u2029]/g, '\n');
+      t = t.replace(/[\u2018\u2019\u201A\u2032]/g, "'").replace(/[\u201C\u201D\u201E\u2033]/g, '"');
+      t = t.replace(/\u2026/g, '...');
+
+      // Literal escape sequences (common when copying from JSON / code strings)
+      var hasWinPath = /[A-Za-z]:\\/.test(t);
+      if (!hasWinPath) {
+        t = t.replace(/\\r\\n|\\n|\\r/g, '\n').replace(/\\t/g, ' ');
+      }
+      t = t.replace(/\\"/g, '"').replace(/\\'/g, "'");
+      t = t.replace(/\\\\/g, '\\');
+      t = t.replace(/\\([*_#`>\[\](){}.!+\-~|=])/g, '$1');
+      t = t.replace(/\\+$/gm, '');
+      t = t.replace(/\\(?=[ \t])/g, '');
+
+      // HTML leftovers
+      t = t.replace(/<br\s*\/?>/gi, '\n').replace(/&nbsp;/gi, ' ').replace(/&amp;/gi, '&')
+           .replace(/&lt;/gi, '<').replace(/&gt;/gi, '>').replace(/&quot;/gi, '"').replace(/&#39;/gi, "'");
+
+      // Markdown artifacts (outside fenced code)
+      t = mapOutsideCode(t, function (seg) {
+        // images and links
+        seg = seg.replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1');
+        seg = seg.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '$1 ($2)');
+        // headings
+        seg = seg.replace(/^[ \t]{0,3}#{1,6}[ \t]+(.*?)[ \t]*#*[ \t]*$/gm, '$1');
+        // horizontal rules
+        seg = seg.replace(/^[ \t]*([-*_])([ \t]*\1){2,}[ \t]*$/gm, '');
+        // bold / strikethrough
+        seg = seg.replace(/\*\*(?=\S)([^\n]*?\S)\*\*/g, '$1');
+        seg = seg.replace(/(^|[^\w])__(?=\S)([^\n]*?\S)__(?![\w])/g, '$1$2');
+        seg = seg.replace(/~~(?=\S)([^\n]*?\S)~~/g, '$1');
+        // italics
+        seg = seg.replace(/(^|[^\w*])\*(?!\s)([^*\n]*[^\s*])\*(?![\w*])/g, '$1$2');
+        seg = seg.replace(/(^|[^\w_])_(?!\s)([^_\n]*[^\s_])_(?![\w_])/g, '$1$2');
+        // whitespace per line
+        seg = seg.split('\n').map(function (line) {
+          var lead = line.match(/^[ \t]*/)[0].replace(/\t/g, '  ');
+          var rest = line.slice(line.match(/^[ \t]*/)[0].length).replace(/[ \t]{2,}/g, ' ').replace(/\s+$/, '');
+          return rest ? lead + rest : '';
+        }).join('\n');
+        return seg;
+      });
+
+      return finalize(t);
+    }
+
+    function cleanSanitize(raw) {
+      var out = cleanCore(raw);
+      return { text: out, note: 'Cleaned whitespace, line breaks, escapes and markdown artifacts. ' + delta(raw, out) };
+    }
+
+    /* ---------------------------------------------------------------
+       Action 2: Optimize for ChatGPT
+    --------------------------------------------------------------- */
+    var LABEL_RE = /^\s*(?:[-*#>]+\s*)?(context|background|role|persona|task|goal|objective|instructions?|request|constraints?|rules?|requirements?|output(?:\s+format)?|format|response\s+format)\s*[:\-\u2013]\s*(.*)$/i;
+    var ROLE_RE = /^(you are|you're|act as|pretend (?:to be|you are)|behave as|imagine you are|take on the role of)\b/i;
+    var CONTEXT_RE = /^(i am|i'm|i work|i've|i have been|we are|we're|my (?:company|team|project|business|goal|audience|name|role|background)|background|for context|context|currently|the (?:audience|reader|user|customer|client) (?:is|are)|our (?:company|team|product|audience|users|customers))\b/i;
+    var FORMAT_RE = /\b(format(?:ted)?|output (?:as|in|a)|respond (?:in|with|as)|reply (?:in|with|as)|answer (?:in|with|as)|return (?:as|in|a|the)|present (?:it|them|the results?) (?:as|in)|json|yaml|csv|xml|html|markdown|table|bullet(?:s| points?)?|numbered list|step[- ]by[- ]step|headings?|as a list|code block)\b/i;
+    var CONSTRAINT_RE = /\b(must(?: not|n't)?|should(?:n't| not)?|do not|don't|never|avoid|only|at most|at least|no more than|no fewer than|no less than|limit(?:ed)? to|maximum|minimum|max\.?|min\.?|without|ensure|make sure|be sure|keep it|keep the|stay|within|under \d+|less than|fewer than|always|tone|style|language|do not use|refrain)\b/i;
+
+    function mapLabel(l) {
+      l = l.toLowerCase().replace(/\s+/g, ' ');
+      if (l === 'context' || l === 'background') return 'context';
+      if (l === 'role' || l === 'persona') return 'role';
+      if (/^(task|goal|objective|instructions?|request)$/.test(l)) return 'task';
+      if (/^(constraints?|rules?|requirements?)$/.test(l)) return 'constraints';
+      return 'format';
+    }
+
+    function splitSentences(line) {
+      var marked = line.replace(/([.!?]["')\]]*)\s+(?=[A-Z0-9"'(\[])/g, function (m, p, off, str) {
+        var before = str.slice(0, off + 1);
+        return ABBREV_RE.test(before) ? m : p + '\u0001';
+      });
+      return marked.split('\u0001').map(function (s) { return s.trim(); }).filter(Boolean);
+    }
+
+    function stripMarker(s) {
+      return s.replace(/^\s*(?:[-*+\u2022]|\d+[.)])\s+/, '').trim();
+    }
+
+    function sentenceCase(s) {
+      s = s.trim();
+      if (!s) return s;
+      s = s.charAt(0).toUpperCase() + s.slice(1);
+      if (!/[.!?:;)\]"'`]$/.test(s)) s += '.';
+      return s;
+    }
+
+    function renderUnits(arr, fallback) {
+      if (!arr.length) return fallback;
+      if (arr.length === 1) return arr[0];
+      if (arr.length === 2) return arr.join(' ');
+      return arr.map(function (u) { return '- ' + u; }).join('\n');
+    }
+
+    function renderBullets(arr) {
+      return arr.map(function (u) { return '- ' + u; }).join('\n');
+    }
+
+    function optimizeChatGPT(raw) {
+      var cleaned = cleanCore(raw);
+      var buckets = { role: [], context: [], task: [], constraints: [], format: [] };
+      var current = null;
+      var sawLabel = false;
+      var inCode = false;
+      var codeLines = [];
+
+      cleaned.split('\n').forEach(function (line) {
+        if (/^\s*```/.test(line)) { inCode = !inCode; codeLines.push(line); if (!inCode) { /* closed */ } return; }
+        if (inCode) { codeLines.push(line); return; }
+        if (!line.trim()) return;
+
+        var lm = line.match(LABEL_RE);
+        if (lm) {
+          sawLabel = true;
+          current = mapLabel(lm[1]);
+          var rest = lm[2].trim();
+          if (rest) splitSentences(rest).forEach(function (s) { buckets[current].push(sentenceCase(stripMarker(s))); });
+          return;
+        }
+
+        var units = splitSentences(line);
+        units.forEach(function (u) {
+          var text = stripMarker(u);
+          if (!text) return;
+          var key = current;
+          if (!key) {
+            if (ROLE_RE.test(text)) key = 'role';
+            else if (CONTEXT_RE.test(text)) key = 'context';
+            else if (FORMAT_RE.test(text)) key = 'format';
+            else if (CONSTRAINT_RE.test(text)) key = 'constraints';
+            else key = 'task';
+          }
+          buckets[key].push(sentenceCase(text));
+        });
+      });
+
+      // Code blocks are kept with the task so nothing is lost
+      var codeBlock = codeLines.join('\n').trim();
+
+      // Ensure a task exists
+      if (!buckets.task.length && !codeBlock) {
+        var order = ['context', 'constraints', 'format'];
+        for (var i = 0; i < order.length; i++) {
+          if (buckets[order[i]].length) { buckets.task.push(buckets[order[i]].shift()); break; }
+        }
+      }
+
+      var role = buckets.role.length ? buckets.role.join(' ') : 'You are a knowledgeable, careful and helpful assistant.';
+      var context = renderUnits(buckets.context, 'No additional context was provided. If something essential is missing, ask a clarifying question before answering.');
+      var task = renderUnits(buckets.task, 'Complete the request described in the context.');
+      if (codeBlock) task = (buckets.task.length ? task + '\n\n' : '') + codeBlock;
+      var constraints = buckets.constraints.length ? renderBullets(buckets.constraints) :
+        '- Be accurate and do not invent facts; state any assumptions you make.\n- Keep the answer focused and free of filler.';
+      var format = buckets.format.length ? renderBullets(buckets.format) :
+        '- Use clear headings and short bullet points where they help readability.\n- Finish with a brief summary of the key points.';
+
+      var text = role + '\n\n' +
+        '## Context\n' + context + '\n\n' +
+        '## Task\n' + task + '\n\n' +
+        '## Constraints\n' + constraints + '\n\n' +
+        '## Output Format\n' + format;
+
+      var note = 'Structured into Context, Task, Constraints and Output Format' +
+        (sawLabel ? ' (existing labels were respected). ' : '. ') +
+        'Found ' + buckets.context.length + ' context, ' + buckets.task.length + ' task, ' +
+        buckets.constraints.length + ' constraint and ' + buckets.format.length + ' format statements.';
+      return { text: text, note: note };
+    }
+
+    /* ---------------------------------------------------------------
+       Action 3: Fix Formatting
+    --------------------------------------------------------------- */
+    var BULLET_RE = /^([-*+\u2022\u00B7\u25CF\u25CB\u25AA\u25AB\u25E6\u2023\u2043\u2013\u2014])\s+(\S.*)$/;
+    var BULLET_TIGHT_RE = /^[\u2022\u00B7\u25CF\u25CB\u25AA\u25AB\u25E6\u2023\u2043](\S.*)$/;
+    var NUMBER_RE = /^(\d{1,3})[.)]\s+(\S.*)$/;
+
+    function tidyInline(s) {
+      return withProtected(s, function (p) {
+        p = p.replace(/[ \t]{2,}/g, ' ');
+        p = p.replace(/\s+([,;!?])/g, '$1');
+        p = p.replace(/([,;])(?=[A-Za-z])/g, '$1 ');
+        return p;
+      });
+    }
+
+    function fixSegment(seg) {
+      var lines = seg.split('\n');
+      var out = [];
+      var counters = {};
+      var prevType = '';
+      var prevText = '';
+      var stats = { bullets: 0, numbers: 0 };
+
+      lines.forEach(function (raw) {
+        var line = raw.replace(/\t/g, '  ').replace(/\s+$/, '');
+        if (!line.trim()) {
+          if (out.length && out[out.length - 1] !== '') out.push('');
+          prevType = '';
+          return;
+        }
+
+        var indentLen = line.match(/^ */)[0].length;
+        var body = line.trim();
+        var level = indentLen > 0 ? Math.min(Math.max(Math.round(indentLen / 2), 1), 6) : 0;
+        var pad = '';
+        for (var k = 0; k < level * 2; k++) pad += ' ';
+        var m;
+        var type = 'text';
+        var rendered;
+
+        if ((m = body.match(BULLET_RE)) || (m = body.match(BULLET_TIGHT_RE) && [null, null, body.match(BULLET_TIGHT_RE)[1]])) {
+          type = 'list';
+          stats.bullets++;
+          Object.keys(counters).forEach(function (key) { if (Number(key) > level) delete counters[key]; });
+          rendered = pad + '- ' + capitalizeSentences(tidyInline(m[2]));
+        } else if ((m = body.match(NUMBER_RE))) {
+          type = 'list';
+          stats.numbers++;
+          Object.keys(counters).forEach(function (key) { if (Number(key) > level) delete counters[key]; });
+          counters[level] = counters[level] === undefined ? parseInt(m[1], 10) : counters[level] + 1;
+          rendered = pad + counters[level] + '. ' + capitalizeSentences(tidyInline(m[2]));
+        } else if (prevType === 'list' && indentLen > 0) {
+          type = 'list';
+          rendered = pad + capitalizeSentences(tidyInline(body));
+        } else {
+          counters = {};
+          rendered = capitalizeSentences(tidyInline(body));
+        }
+
+        // Blank line between paragraphs and lists (unless the paragraph introduces the list with a colon)
+        if (out.length && prevType && prevType !== type && type !== 'list' ) {
+          if (out[out.length - 1] !== '') out.push('');
+        } else if (out.length && prevType === 'text' && type === 'list' && !/:$/.test(prevText) && indentLen === 0) {
+          if (out[out.length - 1] !== '') out.push('');
+        }
+
+        out.push(rendered);
+        prevType = type;
+        prevText = body;
+      });
+
+      return { text: out.join('\n'), stats: stats };
+    }
+
+    function fixFormatting(raw) {
+      var base = raw.replace(/\r\n?/g, '\n')
+        .replace(/[\u200B-\u200D\u2060\uFEFF\u00AD]/g, '')
+        .replace(/[\u00A0\u2000-\u200A\u202F\u205F\u3000]/g, ' ');
+      var totals = { bullets: 0, numbers: 0 };
+      var out = mapOutsideCode(base, function (seg) {
+        var r = fixSegment(seg);
+        totals.bullets += r.stats.bullets;
+        totals.numbers += r.stats.numbers;
+        return r.text;
+      });
+      out = finalize(out);
+      return {
+        text: out,
+        note: 'Capitalized sentences and tidied spacing. Normalized ' + totals.bullets + ' bullet' + (totals.bullets === 1 ? '' : 's') +
+          ' and ' + totals.numbers + ' numbered item' + (totals.numbers === 1 ? '' : 's') + '. ' + delta(raw, out)
+      };
+    }
+
+    /* ---------------------------------------------------------------
+       Action 4: Strip Variables
+    --------------------------------------------------------------- */
+    var PREFIX_RE = /^(insert|enter|add|type|put|paste|write|fill in|fill|input|replace with|replace|specify|your|the|a|an|my|name of)\s+/;
+    var SUFFIX_RE = /\s+(here|goes here|placeholder|text|goes)$/;
+
+    function toVariableName(inner) {
+      var s = inner.trim();
+      if (!s) return null;
+      if (/^[xX\s]?$/.test(s)) return null;                 // checkbox
+      if (/^[\d\s,.\-]+$/.test(s)) return null;             // [1], [1, 2, 3]
+      if (/["'{}:=<>\\\/]/.test(s)) return null;            // looks like code / JSON
+      var core = s.toLowerCase();
+      var prev;
+      do { prev = core; core = core.replace(PREFIX_RE, ''); } while (core !== prev && core);
+      core = core.replace(SUFFIX_RE, '');
+      if (!core) core = s.toLowerCase();
+      var name = core.replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '').toUpperCase();
+      return name || null;
+    }
+
+    function stripVariables(raw) {
+      var found = [];
+      function register(name) { if (found.indexOf(name) === -1) found.push(name); }
+      var count = 0;
+
+      var out = mapOutsideCode(raw.replace(/\r\n?/g, '\n'), function (seg) {
+        // [insert name]
+        seg = seg.replace(/\[([^\[\]\n]{1,60})\](?!\()/g, function (m, inner) {
+          var n = toVariableName(inner);
+          if (!n) return m;
+          register(n); count++;
+          return '{{' + n + '}}';
+        });
+        // {{ name }} and <<name>>
+        seg = seg.replace(/\{\{\s*([^{}\n]{1,60}?)\s*\}\}/g, function (m, inner) {
+          var n = toVariableName(inner);
+          if (!n) return m;
+          register(n); count++;
+          return '{{' + n + '}}';
+        });
+        seg = seg.replace(/<<\s*([^<>\n]{1,60}?)\s*>>/g, function (m, inner) {
+          var n = toVariableName(inner);
+          if (!n) return m;
+          register(n); count++;
+          return '{{' + n + '}}';
+        });
+        // <insert name here>
+        seg = seg.replace(/<\s*((?:insert|enter|your|add|paste|type|fill)[^<>\n]{0,50}?)\s*>/gi, function (m, inner) {
+          var n = toVariableName(inner);
+          if (!n) return m;
+          register(n); count++;
+          return '{{' + n + '}}';
+        });
+        return seg;
+      });
+
+      var note = count
+        ? 'Standardized ' + count + ' placeholder' + (count === 1 ? '' : 's') + ' into ' + found.length + ' unique variable' + (found.length === 1 ? '' : 's') + ':'
+        : 'No placeholders like [insert name] were found, so the text is unchanged.';
+      return { text: out, note: note, chips: found.map(function (n) { return '{{' + n + '}}'; }) };
+    }
+
+    /* ---------------------------------------------------------------
+       Action registry + runner
+    --------------------------------------------------------------- */
+    var ACTIONS = {
+      clean:     { label: 'Clean & Sanitize',     fn: cleanSanitize },
+      optimize:  { label: 'Optimize for ChatGPT', fn: optimizeChatGPT },
+      format:    { label: 'Fix Formatting',       fn: fixFormatting },
+      variables: { label: 'Strip Variables',      fn: stripVariables }
+    };
+
+    var actionButtons = document.querySelectorAll('[data-action]');
+
+    function markActive() {
+      Array.prototype.forEach.call(actionButtons, function (b) {
+        var on = b.getAttribute('data-action') === lastAction;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+
+    function setStatus(note, chips) {
+      $('status-text').textContent = note;
+      var wrap = $('status-chips');
+      wrap.innerHTML = '';
+      (chips || []).forEach(function (c) {
+        var span = document.createElement('span');
+        span.className = 'rounded-md border border-fuchsia-400/30 bg-fuchsia-500/10 px-2 py-0.5 font-mono text-xs text-fuchsia-200';
+        span.textContent = c;
+        wrap.appendChild(span);
+      });
+    }
+
+    function shake(el) {
+      el.classList.remove('shake');
+      void el.offsetWidth;
+      el.classList.add('shake');
+      setTimeout(function () { el.classList.remove('shake'); }, 450);
+    }
+
+    function updateCounters() {
+      var i = inputEl.value, o = outputEl.value;
+      $('in-chars').textContent = i.length.toLocaleString();
+      $('in-words').textContent = countWords(i).toLocaleString();
+      $('in-lines').textContent = (i ? i.split('\n').length : 0).toLocaleString();
+      $('out-chars').textContent = o.length.toLocaleString();
+      $('out-words').textContent = countWords(o).toLocaleString();
+      $('out-tokens').textContent = (o ? Math.ceil(o.length / 4) : 0).toLocaleString();
+    }
+
+    function run(action, silent) {
+      var raw = inputEl.value;
+      if (!raw.trim()) {
+        if (!silent) {
+          showToast('Paste a prompt in the input box first.', 'warn');
+          shake(inputEl);
+          inputEl.focus();
+        } else {
+          outputEl.value = '';
+          updateCounters();
+        }
+        return;
+      }
+      var res;
+      try {
+        res = ACTIONS[action].fn(raw);
+      } catch (err) {
+        showToast('Something went wrong while processing the text.', 'warn');
+        return;
+      }
+      outputEl.value = res.text;
+      lastAction = action;
+      markActive();
+      updateCounters();
+      setStatus(res.note, res.chips);
+      if (!silent) showToast(ACTIONS[action].label + ' applied', 'success');
+    }
+
+    Array.prototype.forEach.call(actionButtons, function (btn) {
+      btn.addEventListener('click', function () { run(btn.getAttribute('data-action'), false); });
+    });
+
+    /* ---------------------------------------------------------------
+       Toast
+    --------------------------------------------------------------- */
+    var toastTimer = null;
+    function showToast(msg, type) {
+      var el = $('toast');
+      var icon = $('toast-icon');
+      $('toast-text').textContent = msg;
+      if (type === 'warn') {
+        icon.className = 'flex h-5 w-5 items-center justify-center rounded-full bg-amber-500/20 text-amber-300';
+        icon.innerHTML = '<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" aria-hidden="true"><path d="M12 7v6M12 17h.01"/></svg>';
+      } else {
+        icon.className = 'flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300';
+        icon.innerHTML = '<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>';
+      }
+      el.classList.remove('show');
+      void el.offsetWidth;
+      el.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { el.classList.remove('show'); }, 2200);
+    }
+
+    /* ---------------------------------------------------------------
+       Copy / download / swap / clear / sample
+    --------------------------------------------------------------- */
+    var copyTimer = null;
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '-1000px';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+
+    function copySuccess() {
+      var label = $('copy-label');
+      var icon = $('copy-icon');
+      label.textContent = 'Copied!';
+      icon.innerHTML = '<path d="M5 13l4 4L19 7"/>';
+      showToast('Copied to clipboard', 'success');
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(function () {
+        label.textContent = 'Copy to Clipboard';
+        icon.innerHTML = '<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/>';
+      }, 1800);
+    }
+
+    $('btn-copy').addEventListener('click', function () {
+      var text = outputEl.value;
+      if (!text) {
+        showToast('Nothing to copy yet.', 'warn');
+        shake(outputEl);
+        return;
+      }
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(copySuccess, function () {
+          if (fallbackCopy(text)) copySuccess(); else showToast('Copy failed. Select the text and press Ctrl/Cmd+C.', 'warn');
+        });
+      } else if (fallbackCopy(text)) {
+        copySuccess();
+      } else {
+        showToast('Copy failed. Select the text and press Ctrl/Cmd+C.', 'warn');
+      }
+    });
+
+    $('btn-download').addEventListener('click', function () {
+      var text = outputEl.value;
+      if (!text) { showToast('Nothing to download yet.', 'warn'); shake(outputEl); return; }
+      var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'cleaned-prompt.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 500);
+      showToast('Download started', 'success');
+    });
+
+    $('btn-swap').addEventListener('click', function () {
+      if (!outputEl.value) { showToast('There is no output to move yet.', 'warn'); shake(outputEl); return; }
+      inputEl.value = outputEl.value;
+      outputEl.value = '';
+      lastAction = null;
+      markActive();
+      updateCounters();
+      setStatus('Output moved to the input box. Pick another transformation to keep refining.', []);
+      showToast('Moved output to input', 'success');
+      inputEl.focus();
+    });
+
+    $('btn-clear').addEventListener('click', function () {
+      inputEl.value = '';
+      outputEl.value = '';
+      lastAction = null;
+      markActive();
+      updateCounters();
+      setStatus('Ready. Paste a prompt and choose a transformation above.', []);
+      inputEl.focus();
+    });
+
+    var SAMPLE = [
+      '## Marketing   email   request',
+      '',
+      '**you are** a senior copywriter\\n   i work at [your company name]   and we sell [insert product type].',
+      '',
+      '\u2022 write a launch email for [product name]\u00A0\u00A0that speaks to [target audience]',
+      '\u2022 mention our \\* 30\\-day money back guarantee \\*',
+      '- the email must be under 150 words ,and never use exclamation marks',
+      '',
+      '1) include a clear call to action',
+      '3) end with a friendly sign\u2011off from [your name]',
+      '',
+      '',
+      '',
+      'respond in plain text with a subject line first.   thanks!'
+    ].join('\n');
+
+    $('btn-sample').addEventListener('click', function () {
+      inputEl.value = SAMPLE;
+      updateCounters();
+      setStatus('Sample loaded. Try each transformation to see what it does.', []);
+      if (lastAction && liveToggle.checked) run(lastAction, true);
+    });
+
+    /* ---------------------------------------------------------------
+       Live mode & counters
+    --------------------------------------------------------------- */
+    inputEl.addEventListener('input', function () {
+      updateCounters();
+      if (liveToggle.checked && lastAction) {
+        clearTimeout(liveTimer);
+        liveTimer = setTimeout(function () { run(lastAction, true); }, 250);
+      }
+    });
+    outputEl.addEventListener('input', updateCounters);
+    liveToggle.addEventListener('change', function () {
+      if (liveToggle.checked && lastAction) run(lastAction, true);
+    });
+
+    /* ---------------------------------------------------------------
+       Modals (Privacy, Terms, About)
+    --------------------------------------------------------------- */
+    var MODALS = {
+      about: {
+        title: 'About Us',
+        html:
+          '<p><strong>AI Prompt Cleaner &amp; Formatter</strong> is a free utility built for people who work with ChatGPT and other AI assistants every day. Our goal is simple: make it effortless to turn a rough, copy-pasted prompt into something clean, structured and ready to use.</p>' +
+          '<h3>What we do</h3>' +
+          '<p>The tool offers four instant transformations: cleaning and sanitizing text, structuring prompts into Context, Task, Constraints and Output Format sections, fixing formatting such as capitalization and lists, and standardizing placeholder variables.</p>' +
+          '<h3>Private by design</h3>' +
+          '<p>Everything runs in your browser. We do not receive, store or analyze the prompts you paste. There are no accounts, no databases and no AI calls behind the scenes.</p>' +
+          '<h3>How we pay the bills</h3>' +
+          '<p>The tool is free for everyone. To cover hosting and development time, we display advertising from third-party networks such as Google AdSense.</p>' +
+          '<h3>Contact</h3>' +
+          '<p>Questions, bug reports or feature ideas are always welcome at <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a>.</p>'
+      },
+      privacy: {
+        title: 'Privacy Policy',
+        html:
+          '<p><em>Effective date: ' + EFFECTIVE_DATE + '</em></p>' +
+          '<p>This Privacy Policy explains how AI Prompt Cleaner &amp; Formatter ("we", "us", "the site") handles information when you use this website.</p>' +
+          '<h3>1. Text you enter</h3>' +
+          '<p>All prompt text you paste or type is processed locally in your web browser. It is not transmitted to our servers, stored in a database, or shared with anyone. When you close or refresh the page, the text is gone.</p>' +
+          '<h3>2. Information we do not collect</h3>' +
+          '<p>We do not require registration and we do not ask for your name, email address or other personal details in order to use the tool.</p>' +
+          '<h3>3. Hosting and server logs</h3>' +
+          '<p>The site is delivered as static files by a hosting provider. Like most hosts, the provider may automatically record technical data such as IP address, browser type and request time for security and operational purposes.</p>' +
+          '<h3>4. Cookies and advertising</h3>' +
+          '<p>We use third-party advertising partners, including Google AdSense, to show ads. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites. Google\'s use of advertising cookies enables it and its partners to serve ads to you based on your visit to this site and/or other sites on the internet.</p>' +
+          '<ul>' +
+          '<li>You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</li>' +
+          '<li>You may also opt out of some third-party vendors\' use of cookies by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer">aboutads.info</a>.</li>' +
+          '<li>Visitors in the European Economic Area, the United Kingdom and Switzerland may be shown a consent prompt before personalized ads are served.</li>' +
+          '</ul>' +
+          '<h3>5. Local storage</h3>' +
+          '<p>The tool itself does not set cookies or save your prompts. Advertising partners may store cookies or similar identifiers in your browser as described above.</p>' +
+          '<h3>6. Children\'s privacy</h3>' +
+          '<p>This site is not directed to children under 13 and we do not knowingly collect personal information from children.</p>' +
+          '<h3>7. Your rights</h3>' +
+          '<p>Depending on where you live, you may have rights regarding your personal data, such as access, correction or deletion. Because we do not collect personal data through the tool, most requests will relate to advertising partners, who each provide their own controls.</p>' +
+          '<h3>8. Changes to this policy</h3>' +
+          '<p>We may update this policy from time to time. Changes take effect when they are posted on this page, and the effective date above will be updated.</p>' +
+          '<h3>9. Contact</h3>' +
+          '<p>If you have questions about this policy, contact us at <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a>.</p>'
+      },
+      terms: {
+        title: 'Terms of Service',
+        html:
+          '<p><em>Effective date: ' + EFFECTIVE_DATE + '</em></p>' +
+          '<p>By accessing or using AI Prompt Cleaner &amp; Formatter (the "Service"), you agree to these Terms of Service. If you do not agree, please do not use the Service.</p>' +
+          '<h3>1. Use of the Service</h3>' +
+          '<p>The Service provides free, browser-based text transformation tools. You may use it for personal or commercial purposes, provided you comply with these Terms and applicable law.</p>' +
+          '<h3>2. Your content</h3>' +
+          '<p>You retain all rights to the text you enter and the output you generate. Because processing happens in your browser, we do not claim any license to your content.</p>' +
+          '<h3>3. Acceptable use</h3>' +
+          '<ul>' +
+          '<li>Do not attempt to disrupt, overload or reverse engineer the Service in a way that harms other users.</li>' +
+          '<li>Do not use the Service to process content that is unlawful or that infringes the rights of others.</li>' +
+          '<li>Do not use automated means to generate artificial ad impressions or clicks on advertisements shown on the site.</li>' +
+          '</ul>' +
+          '<h3>4. Accuracy of results</h3>' +
+          '<p>The Service uses automated, rule-based transformations. Output may contain errors or may not reflect your intent, so please review it before use. You are responsible for how you use the results.</p>' +
+          '<h3>5. Third-party advertising and links</h3>' +
+          '<p>The Service displays advertisements from third parties. We are not responsible for the content, products or practices of advertisers or linked websites.</p>' +
+          '<h3>6. No warranty</h3>' +
+          '<p>The Service is provided "as is" and "as available" without warranties of any kind, whether express or implied, including fitness for a particular purpose, availability or non-infringement.</p>' +
+          '<h3>7. Limitation of liability</h3>' +
+          '<p>To the fullest extent permitted by law, we are not liable for any indirect, incidental, special or consequential damages, or for any loss of data or profits, arising from your use of or inability to use the Service.</p>' +
+          '<h3>8. Changes</h3>' +
+          '<p>We may modify the Service or these Terms at any time. Continued use after changes are posted means you accept the updated Terms.</p>' +
+          '<h3>9. Contact</h3>' +
+          '<p>Questions about these Terms can be sent to <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a>.</p>'
+      }
+    };
+
+    var modalEl = $('modal');
+    var lastFocus = null;
+
+    function openModal(key) {
+      var m = MODALS[key];
+      if (!m) return;
+      lastFocus = document.activeElement;
+      $('modal-title').textContent = m.title;
+      $('modal-body').innerHTML = m.html;
+      $('modal-body').scrollTop = 0;
+      modalEl.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      $('modal-close').focus();
+    }
+
+    function closeModal() {
+      modalEl.classList.remove('open');
+      document.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-modal]'), function (btn) {
+      btn.addEventListener('click', function () { openModal(btn.getAttribute('data-modal')); });
+    });
+    $('modal-close').addEventListener('click', closeModal);
+    modalEl.addEventListener('click', function (e) { if (e.target === modalEl) closeModal(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modalEl.classList.contains('open')) closeModal();
+    });
+
+    /* ---------------------------------------------------------------
+       Init
+    --------------------------------------------------------------- */
+    $('year').textContent = new Date().getFullYear();
+    markActive();
+    updateCounters();
+  })();
+  </script>
+</body>
+</html>
